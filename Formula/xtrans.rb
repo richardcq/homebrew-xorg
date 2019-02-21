@@ -5,7 +5,7 @@ class Xtrans < Formula
   sha256 "adbd3b36932ce4c062cd10f57d78a156ba98d618bdb6f50664da327502bc8301"
   # tag "linuxbrew"
 
-  def self.fedora?()
+  def self.fedora?
     File.file?("/etc/fedora-release")
   end
 
@@ -35,7 +35,6 @@ class Xtrans < Formula
   if fedora?
     patch :DATA
   end
-
 
   def install
     args = %W[
