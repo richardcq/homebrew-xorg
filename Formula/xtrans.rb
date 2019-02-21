@@ -28,7 +28,6 @@ class Xtrans < Formula
     depends_on "linuxbrew/xorg/xorg-sgml-doctools" => [:build, :recommended]
   end
 
-
   def install
     args = %W[
       --prefix=#{prefix}
