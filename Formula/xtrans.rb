@@ -38,7 +38,9 @@ class Xtrans < Formula
       --enable-docs=#{build.with?("docs") ? "yes" : "no"}
     ]
 
+    # Fedora systems do not provide sys/stropts.h
     inreplace "Xtranslcl.c", "# include <sys/stropts.h>", "# include <sys/ioctl.h>"
+
     system "./configure", *args
     system "make", "install"
   end
