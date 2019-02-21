@@ -28,7 +28,6 @@ class Xtrans < Formula
     depends_on "linuxbrew/xorg/xorg-sgml-doctools" => [:build, :recommended]
   end
 
-  patch :DATA
 
   def install
     args = %W[
@@ -40,21 +39,8 @@ class Xtrans < Formula
       --enable-docs=#{build.with?("docs") ? "yes" : "no"}
     ]
 
+    inreplace "Xtranslcl.c", "# include <sys/stropts.h>", "# include <sys/ioctl.h>"
     system "./configure", *args
     system "make", "install"
   end
 end
-__END__
-diff --git a/Xtranslcl.c b/Xtranslcl.c
-index 3217506..70127ed 100644
---- a/Xtranslcl.c
-+++ b/Xtranslcl.c
-@@ -81,7 +81,7 @@ from The Open Group.
- #ifdef sun
- # include <stropts.h>
- #else
--# include <sys/stropts.h>
-+# include <sys/ioctl.h>
- #endif
- #include <sys/wait.h>
- #include <sys/types.h>
