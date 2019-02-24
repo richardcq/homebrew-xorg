@@ -6,11 +6,6 @@ class Xtrans < Formula
   revision 1
   # tag "linuxbrew"
 
-  bottle do
-    cellar :any
-    sha256 "90e5852ee25ed85ba47acaa55723a0506c8313c599671b892024ac1766b15449" => :x86_64_linux
-  end
-
   option "with-docs", "Build documentation"
 
   depends_on "linuxbrew/xorg/util-macros" => :build
